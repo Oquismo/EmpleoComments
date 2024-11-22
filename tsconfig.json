@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "strict": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "verbatimModuleSyntax": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.astro"
+, "src/pages/comentarios.js"  ]
+}

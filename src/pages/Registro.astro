@@ -1,0 +1,94 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Header from "../components/Header.astro"
+---
+
+
+<Layout title="ola astro">
+
+<Header/>
+    <section class="">
+        <div class="container mx-auto text-center">
+          <h2 class="text-3xl font-bold text-indigo-600 mb-6">¿Cómo funciona?</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold mb-3">1. Regístrate gratis</h3>
+              <p>Solo necesitas tu nombre, correo electrónico y un CV si ya lo tienes.</p>
+            </div>
+      
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold mb-3">2. Completa tu perfil</h3>
+              <p>Agrega tu experiencia y habilidades para mostrarle a las empresas quién eres.</p>
+            </div>
+      
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold mb-3">3. Navega entre las ofertas</h3>
+              <p>Busca y encuentra empleos que coincidan con tu experiencia e intereses.</p>
+            </div>
+      
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <h3 class="text-xl font-semibold mb-3">4. Sé encontrado por las empresas</h3>
+              <p>Las empresas pueden ver tu perfil y contactarte directamente.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="registro">
+        <div class="container mx-auto text-center">
+          <h2 class="text-3xl font-bold text-indigo-600 mb-6">Crea tu perfil en minutos</h2>
+          <form action="/submit" method="POST" class="bg-white p-8 rounded-lg shadow-md max-w-md mx-auto">
+            <div class="mb-4">
+              <label for="name" class="block text-lg font-medium text-gray-700">Nombre completo</label>
+              <input type="text" id="name" name="name" class="mt-2 p-3 w-full border border-gray-300 rounded-md" required>
+            </div>
+      
+            <div class="mb-4">
+              <label for="email" class="block text-lg font-medium text-gray-700">Correo electrónico</label>
+              <input type="email" id="email" name="email" class="mt-2 p-3 w-full border border-gray-300 rounded-md" required>
+            </div>
+      
+            <div class="mb-4">
+              <label for="profession" class="block text-lg font-medium text-gray-700">Profesión o área de interés</label>
+              <input type="text" id="profession" name="profession" class="mt-2 p-3 w-full border border-gray-300 rounded-md">
+            </div>
+      
+            <div class="mb-4">
+              <label for="cv" class="block text-lg font-medium text-gray-700">Sube tu CV (opcional)</label>
+              <input type="file" id="cv" name="cv" class="mt-2 p-3 w-full border border-gray-300 rounded-md">
+            </div>
+      
+            <button type="submit" class="bg-indigo-600 text-white p-3 w-full rounded-lg hover:bg-indigo-700">Crear perfil</button>
+          </form>
+        </div>
+      </section>
+
+
+      
+
+
+
+
+</Layout>
+
+<script>
+  const errorMessageElement = document.getElementById("form-error")!;
+  const form = document.getElementById("signup");
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorMessageElement.innerText = "";
+    const formElement = e.target as HTMLFormElement;
+    const response = await fetch(formElement.action, {
+      method: formElement.method,
+      body: new FormData(formElement),
+    });
+    const data = await response.json();
+    if (data.sucess) {
+      window.location.href = "/";
+    } else {
+      errorMessageElement.innerText = data.error;
+    }
+  });
+</script>
+

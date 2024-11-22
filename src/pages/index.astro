@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Header from '../components/Header.astro';
+import Comentarios from '../components/Comentarios.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<Header/>
+
+
+	<section class="bg-indigo-600 text-white text-center py-12">
+		<h2 class="text-3xl font-semibold mb-4">¡Tu nuevo empleo te espera!</h2>
+		<p class="text-lg mb-6">Crea tu perfil de manera rápida y gratuita, y hazte visible para miles de empresas que buscan talento como el tuyo.</p>
+		<a href="/Registro" class="bg-indigo-800 px-6 py-3 text-lg rounded-lg hover:bg-indigo-700">Regístrate ahora</a>
+	</section>
+
+	<!-- Aquí se usa el componente Testimonios -->
+	<Comentarios />
+
+</Layout>
